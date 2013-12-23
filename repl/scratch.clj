@@ -1,6 +1,7 @@
 (ns katabankocr.scratch
   (:require [katabankocr.core :refer :all]))
 
+(+ 1 2)
 
 (def all-tokens  [" _     _  _     _  _  _  _  _ "
                   "| |  | _| _||_||_ |_   ||_||_|"
@@ -53,3 +54,25 @@
 (with-open [r (clojure.java.io/reader "test.data")]
   (doseq [e (partition-entries (line-seq r))]
     (println (process-entry e))))
+
+
+(numbers 0)
+
+(mapv vec (numbers 0))
+
+(defn perms
+  [n]
+  (disj
+                 (set (for [i (range 3)
+                            j (range 3)]
+                        (assoc-in (mapv vec (numbers n)) [i j] \space)))
+            (numbers n)))
+
+(perms 2)
+
+
+
+(doseq [p perms]
+  (println (clojure.string/join \newline
+                                (map #(apply str %) p))))
+

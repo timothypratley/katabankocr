@@ -55,5 +55,7 @@
 
        (fact (map process-entry (partition-entries lines)) => (repeat 3 (range 10)))
 
+       (fact (permute (numbers 2)) => #(= 6 (count %)))
+
        (fact (map process-entry (partition-entries bad-lines)) => [[1 1 1 1 1 1 1 1 1]]))
 
