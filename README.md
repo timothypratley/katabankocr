@@ -17,6 +17,12 @@ To save the results in a file:
 To run tests:
 ```lein midje```
 
+The Kata specification contains a contradiction:
+It states that the scanner can only miss pipes or underscores, not add them, and yet asks for permutations that add or remove.
+I have chosen to stick with removal only as that seems like a real requirement.
+This means that my test results do not match those supplied for AMB.
+
+
 ## License
 
 Copyright © 2013 FIXME
