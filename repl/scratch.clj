@@ -7,6 +7,9 @@
                   "| |  | _| _||_||_ |_   ||_||_|"
                   "|_|  ||_  _|  | _||_|  ||_| _|"])
 
+
+
+
 (map #(apply str %) (partition 3 "123456789"))
 (partition-str 3 "123456789")
 
@@ -75,4 +78,24 @@
 (doseq [p perms]
   (println (clojure.string/join \newline
                                 (map #(apply str %) p))))
+
+
+
+
+
+(defn permute1
+  "Create a set of patterns that can be converted to n by adding a pipe or underscore.
+  Replaces a character in digit n with a space."
+  [n]
+  (disj (set (for [i (range 3)
+                   j (range 3)
+                   c [\space \| \_]]
+               (update-in n [i]
+                          #(apply str (assoc (vec %) j c)))))))
+
+
+
+
+
+(permute1 (numbers 0))
 

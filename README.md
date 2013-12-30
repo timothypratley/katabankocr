@@ -19,9 +19,11 @@ To run tests:
 
 The Kata specification contains a contradiction:
 It states that the scanner can only miss pipes or underscores, not add them, and yet asks for permutations that add or remove.
-I have chosen to stick with removal only as that seems like a real requirement.
-This means that my test results do not match those supplied for AMB.
 
+You can specify to do only removal by setting the character list in perm-map to [\space].
+Note also that there seem to be rules about where | and _ can occur.
+As these are not explicitly stated, patterns where they appear in unexpected locations
+will still be considered.
 
 ## License
 

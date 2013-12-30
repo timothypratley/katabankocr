@@ -55,18 +55,22 @@
 (defn permute
   "Create a set of patterns that can be converted to n by adding a pipe or underscore.
   Replaces a character in digit n with a space."
-  [n]
+  [n characters]
   (disj (set (for [i (range 3)
-                   j (range 3)]
+                   j (range 3)
+                   c characters]
                (update-in n [i]
-                          #(apply str (assoc (vec %) j \space)))))))
+                          #(apply str (assoc (vec %) j c)))))
+        n))
 
 (defn perm-map
   "Build a map of possible patterns to a set of integer values.
   The patterns will only point to the one integer i, and will be merged later."
   [i]
   (reduce (fn [acc n]
-            (assoc acc n #{i})) {} (permute (numbers i))))
+            (assoc acc n #{i}))
+          {}
+          (permute (numbers i) [\space \| \_])))
 
 (def all-potential-meanings
   "Merge pattern->integer maps to get all the possible integers a pattern could be"
